@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform weaponTransform;
 
     [SerializeField] Transform HealthBar;
-    float totalLifeTime = 7.0f;
+    [SerializeField] float totalLifeTime = 7.0f;
     float currentLifeTime = 0;
     [SerializeField] int lifes = 3;
 
@@ -98,7 +98,8 @@ public class Player : MonoBehaviour
     IEnumerator DieCoroutine ()
     {
         lifes--;
-        if (lifes == 0) Destroy(this);
+        currentLifeTime = totalLifeTime;
+        if (lifes == 0) Destroy(this.gameObject);
 
         graphics.enabled = false;
         yield return new WaitForSeconds(0.2f);

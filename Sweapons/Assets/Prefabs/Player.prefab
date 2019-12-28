@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: WeaponPosition
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3955953271426057910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.227, y: 0, z: 0}
+  m_LocalPosition: {x: 0.128, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5211416619234440641}
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.033011675, y: 0.036679685}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -171,7 +171,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.30437136, y: 0.6964382}
+  m_Size: {x: 0.19433236, y: 0.6817663}
   m_EdgeRadius: 0
 --- !u!50 &5211416619234440644
 Rigidbody2D:
@@ -227,6 +227,7 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   weaponTransform: {fileID: 2843910276484368299}
   HealthBar: {fileID: 7963624189778850992}
+  totalLifeTime: 6
   lifes: 3
   graphics: {fileID: 7123705029255803425}
 --- !u!1 &5372646649962179635
@@ -366,8 +367,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7554826262348434999}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.75, z: 1}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5211416619234440641}
   m_RootOrder: 2
@@ -410,7 +411,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e4879985e01465346b05ebb939425e44, type: 3}
+  m_Sprite: {fileID: 4334783836991956000, guid: 2790c0c8ee626f64583af3cb32660c2e,
+    type: 3}
   m_Color: {r: 0, g: 1, b: 0.96201396, a: 1}
   m_FlipX: 0
   m_FlipY: 0

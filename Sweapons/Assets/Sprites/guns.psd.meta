@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: 613fe381a56d2fd4db9be9e595601512
+guid: 2c63da163e9eeab4786f4e5e8481b51b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1171143508752674536
-    second: Sad_boy2001_0
+      213: 7362661061344524757
+    second: guns_0
   - first:
-      213: 2385080345431062910
-    second: Sad_boy2001_1
+      213: -7349882584872989000
+    second: guns_1
   - first:
-      213: -1663895988081515670
-    second: Sad_boy2001_2
+      213: -3476979527478288156
+    second: guns_2
   - first:
-      213: -8420748785795448677
-    second: Sad_boy2001_3
+      213: -9170448629031416532
+    second: guns_3
   - first:
-      213: -6396203659678594929
-    second: Sad_boy2001_4
-  - first:
-      213: 304273027798409101
-    second: Sad_boy2001_5
+      213: -2395591618090941519
+    second: guns_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sad_boy2001_0
+      name: guns_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 28
         width: 8
-        height: 16
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,41 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1aa422fd50db9843b423dc4ed353055
-      internalID: -1171143508752674536
+      spriteID: 8496511f4d23da3428aca9a855d33565
+      internalID: 7362661061344524757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sad_boy2001_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 16
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f3046756f4ef874e9b7043868c15ccf
-      internalID: 2385080345431062910
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sad_boy2001_2
+      name: guns_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 24
         width: 8
-        height: 16
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76bcc474b7ce64c4bae80ceeea5503c1
-      internalID: -1663895988081515670
+      spriteID: 1562fd9bc0d60e84ca64e8004d659539
+      internalID: -7349882584872989000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sad_boy2001_3
+      name: guns_2
       rect:
         serializedVersion: 2
         x: 8
-        y: 0
+        y: 24
         width: 8
-        height: 16
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e847aee9f5922c543bb9de42bf7673f1
-      internalID: -8420748785795448677
+      spriteID: e4c76c322a6a45e4bac42690f9ac1b97
+      internalID: -3476979527478288156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sad_boy2001_4
+      name: guns_3
       rect:
         serializedVersion: 2
         x: 16
-        y: 0
+        y: 24
         width: 8
-        height: 16
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 466baa02bdf1d9b4b953a36dd38736ad
-      internalID: -6396203659678594929
+      spriteID: 6b7be2c39870c8348a84cd54229e2f48
+      internalID: -9170448629031416532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sad_boy2001_5
+      name: guns_4
       rect:
         serializedVersion: 2
         x: 24
-        y: 0
+        y: 24
         width: 8
-        height: 16
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +211,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 484be9543ccf67b4ca25d94f4570aa89
-      internalID: 304273027798409101
+      spriteID: 2a707a517ae3f0141b60c376620a6327
+      internalID: -2395591618090941519
       vertices: []
       indices: 
       edges: []
@@ -253,7 +229,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
