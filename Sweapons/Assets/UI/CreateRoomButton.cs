@@ -13,7 +13,7 @@ public class CreateRoomButton : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsConnected || _roomName.text == "") return;
 
-        RoomOptions _roomOptions = new RoomOptions() { MaxPlayers = 4 };
+        RoomOptions _roomOptions = new RoomOptions() { MaxPlayers = 4, BroadcastPropsChangeToAll = true };
 
         PhotonNetwork.JoinOrCreateRoom(_roomName.text, _roomOptions, TypedLobby.Default);
     }

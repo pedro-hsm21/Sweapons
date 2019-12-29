@@ -49,12 +49,6 @@ public class PlayerManager : MonoBehaviour
         SpawnAllPlayers();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-            SceneManager.LoadScene("MainGame");
-    }
-
     public void SetSpawnPosition(Transform _transform)
     {
         _transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
