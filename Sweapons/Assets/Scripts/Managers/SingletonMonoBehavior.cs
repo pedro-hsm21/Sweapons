@@ -11,18 +11,22 @@ public abstract class SingletonMonoBehavior<T> : MonoBehaviour where T : MonoBeh
         {
             if (_instance == null)
             {
-                _instance = new GameObject("Singleton").AddComponent<T>();
+                _instance = FindObjectOfType<T>();
+
+                if (_instance == null)
+                {
+                    _instance = new GameObject("Singleton").AddComponent<T>();
+                }
             }
 
             return _instance;
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
+
         if (SingletonMonoBehavior<T>._instance != null)
             Destroy(this);
-
-        //else DontDestroyOnLoad(this);
     }
 }

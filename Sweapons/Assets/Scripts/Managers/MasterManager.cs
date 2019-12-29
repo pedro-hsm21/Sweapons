@@ -13,7 +13,10 @@ public class MasterManager : SingletonMonoBehavior<MasterManager>
             {
                 GameSettings[] _allgs = Resources.FindObjectsOfTypeAll<GameSettings>();
 
-                gameSettings = _allgs[0];
+                if (_allgs.Length > 0)
+                    gameSettings = _allgs[0];
+                else
+                    Debug.LogError("Não foi possível carregar um GameSetting");
             }
 
             return gameSettings;

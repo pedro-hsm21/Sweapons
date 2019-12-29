@@ -21,6 +21,7 @@ public class CreateRoomButton : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         print("Room " + _roomName.text + " was created");
+        RoomCanvasManager.Instance.EnterRoom();
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)

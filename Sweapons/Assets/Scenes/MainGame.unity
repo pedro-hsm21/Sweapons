@@ -1154,6 +1154,8 @@ MonoBehaviour:
   playerCount: 2
   playerColors:
   - {r: 0, g: 1, b: 0.9607843, a: 1}
+  - {r: 0.34509802, g: 1, b: 0.42141527, a: 1}
+  - {r: 0.6790246, g: 0.2688679, b: 1, a: 1}
   - {r: 1, g: 0.34509805, b: 0.4745098, a: 1}
   weapons:
   - {fileID: 9093164892516909921, guid: f4a6b9764454a4e41a21845398f1fe7b, type: 3}

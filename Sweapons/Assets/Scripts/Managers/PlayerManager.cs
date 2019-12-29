@@ -26,6 +26,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Weapon[] weapons;
     [SerializeField] Player playerPrefab;
 
+    Dictionary<int, int> playersIDtoIndex = new Dictionary<int, int>();
+
     int[] weaponPlayer;
     Player[] players;
 
@@ -38,11 +40,12 @@ public class PlayerManager : MonoBehaviour
         else
             _instance = this;
 
-        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        DontDestroyOnLoad(this);
     }
 
-    private void Start()
+    public void StartGame()
     {
+        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
         SpawnAllPlayers();
     }
 
@@ -81,4 +84,37 @@ public class PlayerManager : MonoBehaviour
             players[i].SetWeapon(_weapon.gameObject);
         }
     }
+
+    public Color GetPlayerColorByIndex (int playerIndex)
+    {
+        return playerColors[playerIndex];
+    }
+
+    public Color GetPlayerColorByID (int playerID)
+    {
+        return GetPlayerColorByIndex(playersIDtoIndex[playerID]);
+    }
+
+    public void ResetPlayersID ()
+    {
+        playersIDtoIndex.Clear();
+    }
+
+    public void RemovePlayerID (int actorNumber)
+    {
+        playersIDtoIndex.Remove(actorNumber);
+    }
+
+    public void AddPlayerId (int actorNumber)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (!playersIDtoIndex.ContainsValue(i))
+            {
+                playersIDtoIndex.Add(actorNumber, i);
+                return;
+            }
+        }
+    }
+
 }
