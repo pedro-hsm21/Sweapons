@@ -20,6 +20,18 @@ TextureImporter:
   - first:
       213: -7148984886945797884
     second: G_5
+  - first:
+      213: 5720455432503741104
+    second: G_6
+  - first:
+      213: 9151553428834860629
+    second: G_7
+  - first:
+      213: -6826877364469142912
+    second: G_8
+  - first:
+      213: -1215233182310015282
+    second: G_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -130,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 396f55d9978037441b3258f09b10a53c
+      spriteID: 0910bfd7cc9779b46a5189b454d62f81
       internalID: 9202060142997513903
       vertices: []
       indices: 
@@ -151,7 +163,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 837a349375a21da449e322ee634a36f6
+      spriteID: 0051aa785bf1708479c8e42b0063e5c5
       internalID: -6027246121072581219
       vertices: []
       indices: 
@@ -172,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6228b40d8c0a60a4580a0b58af78f077
+      spriteID: 85b4e8e57bf9da244a53f9cb038b26b6
       internalID: 6539253517394425253
       vertices: []
       indices: 
@@ -193,7 +205,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02d36a7363767c142beaf01771cb6b47
+      spriteID: d23f94472ffccff48a5bb5d2ce56e43d
       internalID: 5487426585101092886
       vertices: []
       indices: 
@@ -214,7 +226,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e350f48eaab691438ee86fb735d1b25
+      spriteID: 65dfa48c32cdc4f47b6c3423de1de7d2
       internalID: 1023878456211522656
       vertices: []
       indices: 
@@ -235,8 +247,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d82a7440587b18640842d65fec885ee3
+      spriteID: a98e22a7d2ed3ef4799b99284c35552a
       internalID: -7148984886945797884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b539d2acef66a03468cf75265f9599d2
+      internalID: 5720455432503741104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a453a07f7610dcd479186348b7847122
+      internalID: 9151553428834860629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4220d6b3395bf1843aa3e2ccbffe24c3
+      internalID: -6826877364469142912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 301cbc9016233734a83f706028bb585d
+      internalID: -1215233182310015282
       vertices: []
       indices: 
       edges: []

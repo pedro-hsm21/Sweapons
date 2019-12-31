@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - SpawnPoint
+  - LevelBounds
+  - Collectable
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -15,10 +18,10 @@ TagManager:
   - 
   - 
   - ground
-  - 
-  - 
-  - 
-  - 
+  - platform
+  - collectable
+  - player
+  - bullet
   - 
   - 
   - 

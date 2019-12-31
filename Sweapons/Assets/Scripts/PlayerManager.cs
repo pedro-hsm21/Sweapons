@@ -12,10 +12,12 @@ public class PlayerManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                GameObject _go = new GameObject("InputManager");
-                _instance = _go.AddComponent<PlayerManager>() as PlayerManager;
-            }
+                if (_instance == null)
+                    _instance = FindObjectOfType<PlayerManager>();
 
+                if (_instance == null)
+                    _instance = new GameObject("PlayerManager").AddComponent<PlayerManager>();
+            }
             return _instance;
         }
     }
@@ -23,13 +25,19 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int playerCount = 2;
     [SerializeField] Color[] playerColors;
 
-    [SerializeField] Weapon[] weapons;
+    [SerializeField] int initialPlayerWeapon = 0;
+    [SerializeField] Weapon[] weaponsPrefab;
     [SerializeField] Player playerPrefab;
 
-    int[] weaponPlayer;
+    int[] weaponsPlayerNumbers;
     Player[] players;
 
     GameObject[] spawnPoints;
+
+    IEnumerator ItemSpawner;
+    [SerializeField] float spawnFrequency = 3.0f;
+    [SerializeField] [Range(0, 1)] float spawnChance = 0.75f;
+    [SerializeField] GameObject[] collectablesPrefab;
 
     private void Awake()
     {
@@ -39,11 +47,13 @@ public class PlayerManager : MonoBehaviour
             _instance = this;
 
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
+        SpawnAllPlayers();
     }
 
     private void Start()
     {
-        SpawnAllPlayers();
+        StartCoroutine(ItemSpawnCoroutine());
     }
 
     private void Update()
@@ -59,26 +69,81 @@ public class PlayerManager : MonoBehaviour
 
     void SpawnAllPlayers()
     {
-        weaponPlayer = new int[playerCount];
+        List<int> allSpawnPositionIndexes = GetAllIndexesIn(spawnPoints.Length);
+        List<int> allPlayerIndexes = GetAllIndexesIn(playerCount);
+        weaponsPlayerNumbers = new int[playerCount];
         players = new Player[playerCount];
-        List<int> allPositions = new List<int>();
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            allPositions.Add(i);
-        }
 
         for (int i = 0; i < playerCount; i++)
         {
-            int instanciationPosition = allPositions[Random.Range(0, allPositions.Count)];
-            allPositions.Remove(instanciationPosition);
-
-            players[i] = Instantiate(playerPrefab, spawnPoints[instanciationPosition].transform.position, Quaternion.identity) as Player;
+            int spawnPositionIndex = GetRandomIndexAndRemoveItFromList(ref allSpawnPositionIndexes);
+            Vector3 playerPosition = spawnPoints[spawnPositionIndex].transform.position;
+            players[i] = Instantiate(playerPrefab, playerPosition, Quaternion.identity) as Player;
             players[i].SetPlayerNumber(i, playerColors[i]);
 
-            int _weaponPlayerNumber = i == 0 ? 1 : 0;
-            Weapon _weapon = Instantiate(weapons[0]) as Weapon;
-            _weapon.SetPlayerNumber(_weaponPlayerNumber, playerColors[_weaponPlayerNumber]);
-            players[i].SetWeapon(_weapon.gameObject);
+            int _weaponPlayerNumber = GetRandomIndexAndRemoveItFromList(ref allPlayerIndexes, i);
+            weaponsPlayerNumbers[i] = _weaponPlayerNumber;
+            SetWeaponToPlayer(i, initialPlayerWeapon);
+        }
+    }
+
+    public void SetWeaponToPlayer (int _playerNumber, int weaponIndex)
+    {
+        Weapon _weapon = Instantiate(weaponsPrefab[weaponIndex]) as Weapon;
+        _weapon.SetPlayerNumber(weaponsPlayerNumbers[_playerNumber], playerColors[weaponsPlayerNumbers[_playerNumber]]);
+        players[_playerNumber].SetWeapon(_weapon.gameObject);
+    }
+
+    public void StopPlayersBehavior()
+    {
+        for (int i = 0; i < playerCount; i++)
+        {
+            players[i].enabled = false;
+        }
+    }
+
+    public void StartPlayersBehavior()
+    {
+        for (int i = 0; i < playerCount; i++)
+        {
+            players[i].enabled = true;
+        }
+    }
+
+    public List<int> GetAllIndexesIn(int range)
+    {
+        List<int> allPositions = new List<int>();
+        for (int i = 0; i < range; i++)
+        {
+            allPositions.Add(i);
+        }
+        return allPositions;
+    }
+
+    public int GetRandomIndexAndRemoveItFromList(ref List<int> indexList, int restriction = -1)
+    {
+        if (restriction != -1) indexList.Remove(restriction);
+
+        int randomIndex = Random.Range(0, indexList.Count);
+        int spawnPositionIndex = indexList[randomIndex];
+        indexList.RemoveAt(randomIndex);
+
+        if (restriction != -1) indexList.Add(restriction);
+        return spawnPositionIndex;
+    }
+
+    public IEnumerator ItemSpawnCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnFrequency);
+            float rng = Random.Range(0.0f, 1.0f);
+            //print("the rng was: " + rng);
+            if (rng < spawnChance)
+            {
+                GameObject _go = collectablesPrefab[Random.Range(0, collectablesPrefab.Length)];
+                Instantiate(_go, spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position, Quaternion.identity);
+            }
         }
     }
 }

@@ -42,12 +42,12 @@ public class InputManager : MonoBehaviour
     public bool JumpInputIsPressed(int playerNumber)
     {
         if (playerNumber == 1) return Input.GetKeyDown(KeyCode.W);
-        else return Input.GetKey(KeyCode.UpArrow);
+        else return Input.GetKeyDown(KeyCode.UpArrow);
     }
 
     public bool FireKeyIsPressed(int playerNumber)
     {
         if (playerNumber == 1) return Input.GetKeyDown(KeyCode.J);
-        else return Input.GetKey(KeyCode.Keypad1);
+        else return Input.GetKeyDown(KeyCode.Keypad1);
     }
 }
