@@ -98,7 +98,7 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < playerCount; i++)
         {
-            players[i].enabled = false;
+            players[i].StopPlayerMovement();
         }
     }
 
@@ -106,7 +106,7 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < playerCount; i++)
         {
-            players[i].enabled = true;
+            players[i].StartPlayerMovement();
         }
     }
 
@@ -145,5 +145,10 @@ public class PlayerManager : MonoBehaviour
                 Instantiate(_go, spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position, Quaternion.identity);
             }
         }
+    }
+
+    public bool CanPlayerMove(int playerNumber)
+    {
+        return players[playerNumber].IsAlive && players[playerNumber].CanMove;
     }
 }

@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
     public bool IsAlive => isAlive;
     bool isAlive;
+    public bool CanMove => canMove;
+    bool canMove;
     Vector2 velocity;
 
     [SerializeField] Animator _animator;
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!isAlive) return;
+        if (!isAlive || !canMove) return;
 
         MovementInput();
         UpdateLife();
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
         velocity.x = 0;
 
         if (InputManager.Instance.LeftInputIsPressed(playerNumber)) velocity.x -= 1;
-        if (InputManager.Instance.RightInputIsPressed(playerNumber)) velocity.x += 1;
+        else if (InputManager.Instance.RightInputIsPressed(playerNumber)) velocity.x += 1;
 
         _movementController.Move(velocity);
 
@@ -111,13 +113,13 @@ public class Player : MonoBehaviour
 
     IEnumerator DieCoroutine ()
     {
+        _movementController.StopPhysics();
         isAlive = false;
         MainCamera.Instance.Shake(0.25f, 0.25f);
         lifes--;
         currentLifeTime = totalLifeTime;
         _currentWeapon.SetActive(false);
         _graphics.enabled = false;
-        _movementController.StopPhysics();
 
         _deathParticle.Emit(25);
 
@@ -135,5 +137,15 @@ public class Player : MonoBehaviour
     public void SetForce(Vector2 force)
     {
         _movementController.SetForce(force);
+    }
+
+    public void StopPlayerMovement()
+    {
+        canMove = false;   
+    }
+
+    public void StartPlayerMovement()
+    {
+        canMove = true;
     }
 }

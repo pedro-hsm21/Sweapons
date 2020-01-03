@@ -214,7 +214,9 @@ MonoBehaviour:
   horizontalCollisionMask:
     serializedVersion: 2
     m_Bits: 256
-  jumpForce: 9
+  smoothLandGravityMultiplier: 0.5
+  gravityFallMultiplier: 1.75
+  jumpForce: 13
   xSmooth: 0.3
   xSpeed: 5
 --- !u!114 &5211416619234440646
@@ -231,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponHolderTransform: {fileID: 2843910276484368299}
   _healthBar: {fileID: 7963624189778850992}
-  totalLifeTime: 50
+  totalLifeTime: 3
   lifes: 3
   _graphics: {fileID: 7123705029255803425}
   _deathParticle: {fileID: 4914688096401303662}
