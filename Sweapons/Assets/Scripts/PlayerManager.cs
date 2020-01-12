@@ -69,13 +69,14 @@ public class PlayerManager : MonoBehaviour
 
     void SpawnAllPlayers()
     {
+
         List<int> allSpawnPositionIndexes = GetAllIndexesIn(spawnPoints.Length);
         List<int> allPlayerIndexes = GetAllIndexesIn(playerCount);
         weaponsPlayerNumbers = new int[playerCount];
         players = new Player[playerCount];
 
         for (int i = 0; i < playerCount; i++)
-        {
+        {            
             int spawnPositionIndex = GetRandomIndexAndRemoveItFromList(ref allSpawnPositionIndexes);
             Vector3 playerPosition = spawnPoints[spawnPositionIndex].transform.position;
             players[i] = Instantiate(playerPrefab, playerPosition, Quaternion.identity) as Player;
@@ -150,5 +151,10 @@ public class PlayerManager : MonoBehaviour
     public bool CanPlayerMove(int playerNumber)
     {
         return players[playerNumber].IsAlive && players[playerNumber].CanMove;
+    }
+
+    public bool EndGame ()
+    {
+        return players[0].PlayerLifes() <= 0 || players[1].PlayerLifes() <= 0;
     }
 }

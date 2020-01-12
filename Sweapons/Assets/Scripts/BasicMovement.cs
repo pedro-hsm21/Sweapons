@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -10,7 +11,7 @@ public class BasicMovement : MonoBehaviour
     Rigidbody2D _rigidbody;
     BoxCollider2D _collider;
     Transform _transform;
-    [SerializeField] LayerMask grounMask;
+    [FormerlySerializedAs("grounMask")] [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask horizontalCollisionMask;
 
     [SerializeField] float smoothLandGravityMultiplier = 0.95f;
@@ -38,13 +39,12 @@ public class BasicMovement : MonoBehaviour
     private void Start()
     {
         currentLookingX = _transform.localScale.x;
-    }
+    }   
 
     private void FixedUpdate()
     {
         CheckVerticalCollision();
-
-
+        
         float additionalGravityForce = 0;
         if (_rigidbody.velocity.y < 0 && !isGrounded)
         {
@@ -62,23 +62,38 @@ public class BasicMovement : MonoBehaviour
         isGrounded = false;
         if (_rigidbody.velocity.y > 0.1f) return;
         
+        var velocity = _rigidbody.velocity; 
+        
         float skinWidth = 0.001f;
         for (int i = 0; i < 3; i++)
         {
-            float xPosition = (_collider.bounds.min.x - skinWidth) + ((_collider.bounds.size.x - skinWidth * 2) / 2 * i);
-            Vector2 origin = new Vector2(xPosition, _collider.bounds.min.y);
-
-            RaycastHit2D hitInfo = Physics2D.Raycast(origin, Vector2.down, 0.1f + Mathf.Abs(_rigidbody.velocity.y) / 30, grounMask);
+            var xPosition = (_collider.bounds.min.x - skinWidth) + ((_collider.bounds.size.x - skinWidth * 2) / 2 * i);
+            var origin = new Vector2(xPosition, _collider.bounds.min.y);
+            
+            var rayDistance = 0.1f + Mathf.Abs(velocity.y) * Time.fixedDeltaTime;
+            var hitInfo = Physics2D.Raycast(origin, Vector2.down, rayDistance, groundMask);
+            
             if (hitInfo)
             {
-                Debug.DrawRay(origin, Vector2.down * (0.1f + Mathf.Abs(_rigidbody.velocity.y) / 30), Color.green);
+               Debug.DrawRay(origin, Vector2.down * (0.1f + Mathf.Abs(velocity.y) * Time.fixedDeltaTime), Color.green);
                 isGrounded = true;
+                //
+                // var hitDistance = Vector2.Distance(Vector2.down * velocity.y, Vector2.down * transform.position.y);
+                
+                //Debug.Log($"{Mathf.Abs(velocity.y * Time.fixedDeltaTime)} -> {Mathf.Abs(hitDistance)}");
+                // if (mathf.abs(velocity.y * time.fixeddeltatime) > mathf.abs(hitdistance))
+                // {
+                //     velocity.y = hitdistance / time.fixeddeltatime;
+                //     debug.drawline(_transform.position, _transform.position + vector3.up * velocity.y, color.yellow, 2.0f);
+                //     _rigidbody.velocity = velocity;
+                // }
+
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _rigidbody.velocity.y * smoothLandGravityMultiplier);
                 return;
             }
             else
             {
-                Debug.DrawRay(origin, Vector2.down * (0.1f + Mathf.Abs(_rigidbody.velocity.y) / 30), Color.red);
+                Debug.DrawRay(origin, Vector2.down * (0.1f + Mathf.Abs(velocity.y) * Time.fixedDeltaTime), Color.red);
             }
         }
     }
@@ -98,11 +113,11 @@ public class BasicMovement : MonoBehaviour
             if (hit)
             {
                 currentHorizontalVelocity = 0;
-                Debug.DrawRay(origin, Vector2.right * 0.1f * currentLookingX, Color.green);
+                Debug.DrawRay(origin, Vector2.right * (0.1f * currentLookingX), Color.green);
             }
             else
             {
-                Debug.DrawRay(origin, Vector2.right * 0.1f * currentLookingX, Color.red);
+                Debug.DrawRay(origin, Vector2.right * (0.1f * currentLookingX), Color.red);
             }
         }
 
@@ -111,8 +126,10 @@ public class BasicMovement : MonoBehaviour
 
     public void Flip()
     {
-        currentLookingX = _transform.localScale.x * -1;
-        _transform.localScale = new Vector3(currentLookingX, _transform.localScale.y, _transform.localScale.z);
+        var localScale = _transform.localScale;
+        currentLookingX = localScale.x * -1;
+        localScale = new Vector3(currentLookingX, localScale.y, localScale.z);
+        _transform.localScale = localScale;
     }
 
     public void Jump ()

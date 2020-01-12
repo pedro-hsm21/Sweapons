@@ -215,8 +215,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   smoothLandGravityMultiplier: 0.5
-  gravityFallMultiplier: 1.75
-  jumpForce: 13
+  gravityFallMultiplier: 1.25
+  jumpForce: 12.5
   xSmooth: 0.3
   xSpeed: 5
 --- !u!114 &5211416619234440646

@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F7)) totalLifeTime = 1000;
+        
         if (!isAlive || !canMove) return;
 
         MovementInput();
@@ -85,6 +87,7 @@ public class Player : MonoBehaviour
 
     public void SetPlayerNumber (int number, Color color)
     {
+        PlayerHUDManager.Instance.InitializePlayerHUD(number, color);
         _color = color;
         var mainModule = _deathParticle.main;
         mainModule.startColor = _color;
@@ -113,6 +116,8 @@ public class Player : MonoBehaviour
 
     IEnumerator DieCoroutine ()
     {
+        ExplosionSFXManager.Instance.PlayShotSFX();
+        PlayerHUDManager.Instance.SetPlayerDeath(playerNumber);
         _movementController.StopPhysics();
         isAlive = false;
         MainCamera.Instance.Shake(0.25f, 0.25f);
@@ -123,8 +128,7 @@ public class Player : MonoBehaviour
 
         _deathParticle.Emit(25);
 
-        if (lifes == 0) Destroy(this.gameObject);
-
+        if (lifes == 0) yield break;
         yield return new WaitForSeconds(_deathParticle.main.startLifetime.constant);
 
         PlayerManager.Instance.SetSpawnPosition(this.transform);
@@ -132,6 +136,11 @@ public class Player : MonoBehaviour
         _graphics.enabled = true;
         _currentWeapon.SetActive(true);
         _movementController.StartPhysics();
+    }
+
+    public float PlayerLifes()
+    {
+        return lifes;
     }
 
     public void SetForce(Vector2 force)
